@@ -11,5 +11,17 @@ INSERT INTO "article" ("cod_article", "name", "price") VALUES (4, 'Teclado', 44.
 INSERT INTO "article" ("cod_article", "name", "price") VALUES (5, 'Mouse', 25.00);
 
 INSERT INTO "order" ("cod_order", "date","cod_cliente") VALUES ('2ff82182fdzx', '2023-01-19',1);
+INSERT INTO "order" ("cod_order", "date","cod_cliente") VALUES ('2f21f322fdzx', '2023-03-22',2);
+INSERT INTO "order" ("cod_order", "date","cod_cliente") VALUES ('2f21f9j6tazx', '2023-06-16',3);
+INSERT INTO "order" ("cod_order", "date","cod_cliente") VALUES ('fa321f9600f8', '2023-02-27',4);
+
 
 INSERT INTO "orderarticle" ("cod_detail", "cod_order","cod_article") VALUES (1, '2ff82182fdzx', 1);
+INSERT INTO "orderarticle" ("cod_detail", "cod_order","cod_article") VALUES (2, '2ff82182fdzx', 3);
+INSERT INTO "orderarticle" ("cod_detail", "cod_order","cod_article") VALUES (3, '2ff82182fdzx', 4);
+INSERT INTO "orderarticle" ("cod_detail", "cod_order","cod_article") VALUES (4, '2f21f322fdzx', 2);
+INSERT INTO "orderarticle" ("cod_detail", "cod_order","cod_article") VALUES (5, '2f21f322fdzx', 3);
+INSERT INTO "orderarticle" ("cod_detail", "cod_order","cod_article") VALUES (6, '2f21f322fdzx', 5);
+INSERT INTO "orderarticle" ("cod_detail", "cod_order","cod_article") VALUES (7, '2f21f9j6tazx', 1);
+INSERT INTO "orderarticle" ("cod_detail", "cod_order","cod_article") VALUES (8, '2f21f9j6tazx', 5);
+INSERT INTO "orderarticle" ("cod_detail", "cod_order","cod_article") VALUES (9, 'fa321f9600f8', 4);

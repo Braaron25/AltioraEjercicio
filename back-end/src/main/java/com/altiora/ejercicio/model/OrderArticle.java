@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Table(name = "orderarticle")
-@TableGenerator(name="tab", initialValue=6, allocationSize=50)
+@TableGenerator(name="tab", initialValue=10, allocationSize=50)
 public class OrderArticle {
 
     @Id
