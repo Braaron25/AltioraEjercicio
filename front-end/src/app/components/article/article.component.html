@@ -1,0 +1,34 @@
+<div>
+    <h2><b>New Article</b></h2>
+    <div>
+        <label>Article name:</label>
+        <input type="text" pInputText [(ngModel)]="articleName" />
+    </div>
+    <div>
+        <label>Price:</label>
+        <input type="text" pInputText [(ngModel)]="articlePrice" />
+    </div>
+    <button type="button" pButton pRipple (click)="addNewArticle()" label="Add" class="p-button-success"></button>
+</div>
+
+
+<br>
+<h3><b>Articles List</b></h3>
+<p-table [value]="articleList" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Price</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-article>
+        <tr>
+            <td>{{ article.code }}</td>
+            <td>{{ article.name }}</td>
+            <td>{{ article.price }}</td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<p-toast></p-toast>

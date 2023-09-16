@@ -1,0 +1,67 @@
+<h2><b>New Order</b></h2>
+<div style="display: in;">
+    <div>
+        <label>Client:</label>
+        <p-dropdown [options]="clientList" [(ngModel)]="selectedClient" placeholder="Select a Client" optionLabel="nombreCompleto"></p-dropdown>
+    </div>
+    <div>
+        <label>Article:</label>
+        <p-multiSelect [options]="articleList" [(ngModel)]="selectedArticles" defaultLabel="Select an Article" optionLabel="name"
+            display="chip"></p-multiSelect>
+    </div>
+    <button type="button" pButton pRipple (click)="addNewOrder()" label="Add" class="p-button-success"></button>
+</div>
+
+<h3 style="margin-top: 20px;"><b>Order List</b></h3>
+<p-table [value]="orderList" dataKey="name" [tableStyle]="{ 'min-width': '60rem' }">
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width: 5rem"></th>
+            <th>Code</th>
+            <th>Client</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-order let-expanded="expanded">
+        <tr>
+            <td>
+                <button type="button" pButton pRipple [pRowToggler]="order" class="p-button-text p-button-rounded p-button-plain" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+            </td>
+            <td>{{ order.code }}</td>
+            <td>{{ order.client.firstName + ' ' + order.client.lastName}}</td>
+            <td>{{ order.date }}</td>
+            <td>
+                <a [routerLink]="['/home/orders', order.code]"><i class="pi pi-pencil" style="margin-right: 10px;" title="Edit"></i></a>
+                
+                <a (click)="deleteOrder(order.code)"> <i class="pi pi-trash" title="Delete"></i></a>
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="rowexpansion" let-order>
+        <tr>
+            <td colspan="7">
+                <div class="p-3">
+                    <p-table [value]="order.orderArticleList" dataKey="id">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th>Code</th>
+                                <th>Article</th>
+                                <th>Price</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-detail>
+                            <tr>
+                                <td>{{ detail.code }}</td>
+                                <td>{{ detail.article.name }}</td>
+                                <td>{{ detail.article.price }}</td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<p-toast></p-toast>

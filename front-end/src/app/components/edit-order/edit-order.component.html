@@ -1,0 +1,37 @@
+<div>
+    <div>
+        <label><b>Order code: </b></label> {{orderInfo.code}} <br>
+        <label><b>Client: </b></label> {{orderInfo.client.firstName + ' ' + orderInfo.client.lastName}} <br>
+        <label><b>Date: </b></label> {{orderInfo.date}}
+    </div>
+    <div>
+        <label>Article:</label>
+        <p-dropdown [options]="articleList" [(ngModel)]="selectedArticle" placeholder="Select an Article" optionLabel="name"></p-dropdown>
+        <button type="button" pButton pRipple (click)="addArticle(selectedArticle)" label="Add article" class="p-button-success"></button>
+        <button type="button" pButton pRipple (click)="updateOrder()" label="Update" style="float: right;"></button>
+    </div>
+    <div>
+        <p-table [value]="orderInfo.orderArticleList" [tableStyle]="{ 'min-width': '50rem' }">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Code</th>
+                    <th>Article</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-orderArticle>
+                <tr>
+                    <td>{{ orderArticle.code }}</td>
+                    <td>{{ orderArticle.article.name }}</td>
+                    <td>{{ orderArticle.article.price }}</td>
+                    <td>
+                        <a (click)="deleteArticle(orderArticle)"> <i class="pi pi-trash" title="Delete"></i></a>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+
+<p-toast></p-toast>

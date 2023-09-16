@@ -1,0 +1,35 @@
+<div>
+    <h2><b>New Client</b></h2>
+    <div>
+        <label>First name:</label>
+        <input type="text" pInputText [(ngModel)]="clientFirstName" />
+    </div>
+    <div>
+        <label>Last name:</label>
+        <input type="text" pInputText [(ngModel)]="clientLastName" />
+    </div>
+    <button type="button" pButton pRipple (click)="addNewClient()" label="Add" class="p-button-success"></button>
+</div>
+
+
+
+<br>
+<h3>Clients List</h3>
+<p-table [value]="clientList" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Code</th>
+            <th>First name</th>
+            <th>Last name</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-client>
+        <tr>
+            <td>{{ client.code }}</td>
+            <td>{{ client.firstName }}</td>
+            <td>{{ client.lastName }}</td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<p-toast></p-toast>
